@@ -1,0 +1,3 @@
+C:/Users/Kot/CLionProjects/HW26/phone/cmake-build-debug/CMakeFiles/phone.dir
+C:/Users/Kot/CLionProjects/HW26/phone/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Kot/CLionProjects/HW26/phone/cmake-build-debug/CMakeFiles/rebuild_cache.dir
