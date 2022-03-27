@@ -1,12 +1,9 @@
 #include <iostream>
 
-class Monitor
-{
+class Monitor{
     int widthMon=30;
     int highMon=15;
-    class Window
-    {
-      public:
+    struct Window{
         int x=0;
         int y=0;
         int width=10;

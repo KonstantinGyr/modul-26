@@ -1,11 +1,8 @@
 #include <iostream>
 #include <vector>
 
-class Player
-{
-    class Track
-    {
-      public:
+class Player{
+    struct Track{
           std::string name;
           std::string creation;
           int duration;

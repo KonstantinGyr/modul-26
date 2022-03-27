@@ -1,39 +1,48 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <string>
 
-class Phone
-{
-    class Number
-    {
-    public:
-        std::string name;
-        std::string num;
-    };
-    Number number1={"Ivan","+78637552773"};
-    Number number2={"Peter","+76458675375"};
-    Number number3={"Vlad","+77569784302"};
+class Number{
+    std::string name;
+    std::string num;
+public:
+    void setName(std::string n){
+        name=n;
+    }
+    bool setNumber(std::string n){
+        if((n.at(0)!='+')||(n.at(1)!='7')||(n.size()!=12)){
+            return  false;
+        }
+        else{
+            num=n;
+            return true;
+        }
+    }
+    std::string getName(){
+        return name;
+    }
+    std::string getNumber(){
+        return num;
+    }
+};
+
+class Phone{
     Number number;
-    std::vector<Number>numbers={number1,number2,number3};
+    std::vector<Number>numbers;
 public:
     void add(){
-        bool ok;
         std::string n;
         std::cout<<"Enter name: ";
-        std::cin>>number.name;
+        std::cin>>n;
+        number.setName(n);
         do {
             std::cout << "Enter number: ";
             std::cin >> n;
-            if((n.at(0)!='+')||(n.at(1)!='7')||(n.size()>12)){
-                ok=false;
+            number.setNumber(n);
+            if(!number.setNumber(n)){
                 std::cout<<"Incorrect number-";
             }
-            else{
-                ok=true;
-            }
-        }while(!ok);
-        number.num=n;
+        }while(!number.setNumber(n));
         numbers.push_back(number);
     }
     void call(){
@@ -42,8 +51,8 @@ public:
         std::cin>>str;
         bool flag=false;
         for(auto & elem : numbers){
-            if(elem.name == str){
-                std::cout << "CALL to number: " << elem.num << std::endl;
+            if(elem.getName() == str){
+                std::cout << "CALL to number: " << elem.getNumber() << std::endl;
                 flag=true;
                 break;
             }
@@ -58,11 +67,11 @@ public:
         std::cin>>str;
         bool flag=false;
         for(auto & item : numbers ){
-            if(item.name == str){
+            if(item.getName() == str){
                 std::cout<<"Write: ";
                 std::cin.ignore(100,'\n');
                 std::getline(std::cin,str);
-                std::cout << "SMS to " << item.name <<": "<< std::endl;
+                std::cout << "SMS to " << item.getName() <<": "<< std::endl;
                 std::cout<<str<<std::endl;
                 flag=true;
                 break;
@@ -73,6 +82,7 @@ public:
         }
     }
 };
+
 int main() {
     auto* phone=new Phone();
     std::string command;
